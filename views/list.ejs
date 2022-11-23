@@ -1,0 +1,25 @@
+<%- include('partials/header') -%>
+    <div class="box" id="heading">
+        <h1>
+            <%= title %>
+        </h1>
+    </div>
+    <div class="box">
+        <% newItem.forEach((data)=> { %>
+            <form action="/delete" method="POST">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" onChange="this.form.submit()" value=<%= data._id %>>
+                    <p>
+                        <%= data.name %>
+                    </p>
+                </div>
+                <input type="hidden" name="titleName" value="<%= title %>" />   
+            </form>
+            <% }) %>
+                <form class="item" action="/" method="POST">
+                    <input type="text" name="newTodo" placeholder="Enter todo list" />
+                    <button type="submit" name="list" value="<%=title %>">+</button>
+                </form>
+    </div>
+
+    <%- include('partials/footer') -%>
